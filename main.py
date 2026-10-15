@@ -1,7 +1,6 @@
-#Attaching meta data
+#Avoiding the Pydantic type cohersion by strict=True in Field
+
 from pydantic import BaseModel, EmailStr, AnyUrl, Field
-#The url must have protocol specified
-#Field is very important for meta data(data about data)
 from typing import List, Dict, Annotated, Optional
 #Data Validation
 def add_patient_info(info:Patient):
@@ -13,7 +12,7 @@ class Patient(BaseModel):
     age: int = Field(gt=0, lt=120)
     linkedin_url : AnyUrl
     email: EmailStr
-    weight: float = Field(gt=0)
+    weight: float = Field(gt=0, strict=True)
     married: Annotated[bool, Field(default=False, description="Is the patient married or not?")] 
     allergies: Annotated[Optional[List[str]], Field(max_length=5)]
     contact_details: dict[str, str]

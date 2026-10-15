@@ -40,3 +40,5 @@ patient_info = {'name':'abdullah', 'age':30, 'weight':75.2,'email':'aka@htfs.com
 patient1 = Patient(**patient_info)
 
 add_patient_info(patient1)
+json_format = patient1.model_dump_json(indent=2)
+print(json_format)
